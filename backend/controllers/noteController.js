@@ -38,3 +38,15 @@ export const updateNote = async (req, res) => {
         res.status(500).json({message:"Error Deleting Node"});
     }
 }
+
+export const deleteNote = async (req, res) => {
+  try {
+    const deletedNote = await Notes.findByIdAndDelete(req.params.id);
+    if (!deletedNote) {
+      return res.status(404).json({ message: "Note Not Found" });
+    }
+    res.json({ message: "Note deleted successfully", id: req.params.id });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting Note", error });
+  }
+};
