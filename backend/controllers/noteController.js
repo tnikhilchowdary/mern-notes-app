@@ -22,3 +22,19 @@ export const createNote = async (req, res) => {
         res.status(500).json({message:"Error creating Note"});
     }
 }
+
+export const updateNote = async (req, res) => {
+    try{
+        const {title, content} = req.body;
+        const updated = await Notes.findByIdAndUpdate(
+            req.params.id,
+            {title, content},
+            {new: true}
+        );
+        if(!updated) return res.status(404).json({message:"Note Not Found"});
+        res.json(updated);
+    }
+    catch(error){
+        res.status(500).json({message:"Error Deleting Node"});
+    }
+}
