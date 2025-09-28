@@ -1,13 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-import axios from "axios";
+import React from "react";
+import NoteForm from "./pages/NoteForm";
 
 function App() {
   return (
     <div className="App">
-      <div>
-        <h1>Notes App</h1>
-      </div>
+      <h1>Notes App</h1>
+      <NoteForm />
     </div>
   );
 }
